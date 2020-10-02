@@ -5,24 +5,45 @@
 
 package org.acme.spring.di.domain;
 
-import lombok.NoArgsConstructor;
 import org.acme.spring.di.domain.Recipe.Recipe;
+import org.acme.spring.di.integration.entity.RecipeEntity;
+import org.acme.spring.di.integration.entity.RecipeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import javax.enterprise.context.ApplicationScoped;
+import java.util.Optional;
+
 
 /**
  * {@link RecipeService} の実装クラス。
  */
-@NoArgsConstructor
-@ApplicationScoped
+@Service
 public class RecipeServiceImpl implements RecipeService {
+
+  @Autowired
+  RecipeRepository recipeRepository;
 
   /**
    * {@inheritDoc}
    */
   @Override
   public Recipe getRecipe(Integer recipeId) {
-    return null;
+
+    Optional<RecipeEntity> optionalRecipeEntity = recipeRepository.findById(recipeId);
+
+    if (optionalRecipeEntity.isPresent()) {
+      RecipeEntity recipeEntity = optionalRecipeEntity.get();
+      return Recipe.builder()
+                   .id(recipeEntity.getId())
+                   .title(recipeEntity.getTitle())
+                   .ingredients(recipeEntity.getIngredients())
+                   .makingTime(recipeEntity.getMakingTime())
+                   .serves(recipeEntity.getServes())
+                   .cost(recipeEntity.getCost())
+                   .build();
+    } else {
+      return null;
+    }
   }
 
   @Override
