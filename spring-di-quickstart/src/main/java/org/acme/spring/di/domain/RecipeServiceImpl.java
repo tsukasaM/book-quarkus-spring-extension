@@ -9,6 +9,7 @@ import org.acme.spring.di.domain.Recipe.Recipe;
 import org.acme.spring.di.integration.entity.RecipeEntity;
 import org.acme.spring.di.integration.entity.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -18,6 +19,7 @@ import java.util.Optional;
  * {@link RecipeService} の実装クラス。
  */
 @Service
+@Configuration
 public class RecipeServiceImpl implements RecipeService {
 
   @Autowired

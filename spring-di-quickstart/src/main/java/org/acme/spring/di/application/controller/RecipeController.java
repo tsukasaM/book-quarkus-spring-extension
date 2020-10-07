@@ -4,11 +4,14 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+import org.acme.spring.di.application.payload.CreateRecipeRequest;
+import org.acme.spring.di.application.payload.CreateRecipeResponse;
 import org.acme.spring.di.application.payload.RecipeResponse;
 import org.acme.spring.di.domain.Recipe.Recipe;
 import org.acme.spring.di.domain.RecipeService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,16 +41,16 @@ public class RecipeController {
     return RecipeResponse.of(recipe);
   }
 
-//  /**
-//   * 指定したレシピを登録するためのエンドポイントです
-//   *
-//   * @param request 登録したいレシピのリクエスト
-//   * @return 登録したレシピ
-//   */
-//  @POST
-//  @Produces(MediaType.APPLICATION_JSON)
-//  public CreateRecipeResponse getRecipe(CreateRecipeRequest request) {
-//    Recipe recipe = recipeService.createRecipe(request.toModel());
-//    return CreateRecipeResponse.of(recipe);
-//  }
+  /**
+   * 指定したレシピを登録するためのエンドポイントです
+   *
+   * @param request 登録したいレシピのリクエスト
+   * @return 登録したレシピ
+   */
+  @PostMapping
+  @Produces(MediaType.APPLICATION_JSON)
+  public CreateRecipeResponse getRecipe(CreateRecipeRequest request) {
+    Recipe recipe = recipeService.createRecipe(request.toModel());
+    return CreateRecipeResponse.of(recipe);
+  }
 }

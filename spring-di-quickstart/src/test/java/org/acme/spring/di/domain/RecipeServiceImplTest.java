@@ -1,11 +1,10 @@
-package org.acme.recipe.domain.service;
+package org.acme.spring.di.domain;
 
 import com.ninja_squad.dbsetup.DbSetup;
 import com.ninja_squad.dbsetup.destination.DriverManagerDestination;
 import com.ninja_squad.dbsetup.operation.Operation;
 import io.quarkus.test.junit.QuarkusTest;
 import org.acme.spring.di.domain.Recipe.Recipe;
-import org.acme.spring.di.domain.RecipeServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
