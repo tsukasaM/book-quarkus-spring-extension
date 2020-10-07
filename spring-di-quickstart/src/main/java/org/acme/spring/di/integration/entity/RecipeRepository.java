@@ -7,21 +7,21 @@ import java.util.Optional;
 
 public interface RecipeRepository extends CrudRepository<RecipeEntity, Integer> {
 
-  /**
-   * ID を指定してレシピのエンティティを取得します.
-   *
-   * @param id レシピの ID
-   * @return 取得したレシピのエンティティ
-   */
-  Optional<RecipeEntity> findById(Integer id);
-
+//  /**
+//   * ID を指定してレシピのエンティティを取得します.
+//   *
+//   * @param id レシピの ID
+//   * @return 取得したレシピのエンティティ
+//   */
+//  Optional<RecipeEntity> findById(Integer id);
+//
 //  /**
 //   * レシピを登録します.
 //   *
 //   * @param recipeEntity 新規登録するレシピ
 //   * @return 新規登録されたレシピのエンティティ
 //   */
-//  RecipeEntity create(RecipeEntity recipeEntity);
+//  RecipeEntity save(RecipeEntity recipeEntity);
 
 //  /**
 //   * 複数のレシピのエンティティを取得します.

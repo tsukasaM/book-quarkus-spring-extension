@@ -12,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 
@@ -24,6 +27,11 @@ public class RecipeServiceImpl implements RecipeService {
 
   @Autowired
   RecipeRepository recipeRepository;
+
+  private static final String LOCAL_DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
+  DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(LOCAL_DATE_TIME_FORMAT);
+
 
   /**
    * {@inheritDoc}
@@ -50,14 +58,25 @@ public class RecipeServiceImpl implements RecipeService {
 
   @Override
   public Recipe createRecipe(Recipe recipe) {
-    return null;
-  }
+    RecipeEntity recipeEntity =  RecipeEntity.builder()
+                                             .cost(recipe.getCost())
+                                             .title(recipe.getTitle())
+                                             .serves(recipe.getServes())
+                                             .ingredients(recipe.getIngredients())
+                                             .makingTime(recipe.getMakingTime())
+                                             .createdAt(Timestamp.valueOf(LocalDateTime.now().format(dateTimeFormatter)))
+                                             .updatedAt(Timestamp.valueOf(LocalDateTime.now().format(dateTimeFormatter)))
+                                             .build();
 
-//  @Override
-//  @Transactional
-//  public Recipe createRecipe(Recipe recipe) {
-//    RecipeEntity recipeEntity = RecipeEntityMapper.toEntity(recipe);
-//    recipeEntity.persist();
-//    return RecipeEntityMapper.fromEntity(recipeEntity);
-//  }
+    RecipeEntity createdEntity = recipeRepository.save(recipeEntity);
+
+    return Recipe.builder()
+                 .id(createdEntity.getId())
+                 .title(createdEntity.getTitle())
+                 .makingTime(createdEntity.getMakingTime())
+                 .serves(createdEntity.getServes())
+                 .ingredients(createdEntity.getIngredients())
+                 .cost(createdEntity.getCost())
+                 .build();
+  }
 }

@@ -73,27 +73,27 @@ class RecipeServiceImplTest {
     assertThat(actual).isEqualTo(expected);
   }
 
-//  @Test
-//  void test_指定したレシピを正常に登録できる事() {
-//
-//    Recipe actual = target.createRecipe(Recipe.builder()
-//                                              .title("チキンカレー")
-//                                              .makingTime("45分")
-//                                              .serves("5人")
-//                                              .ingredients("玉ねぎ,肉,スパイス")
-//                                              .cost(450)
-//                                              .build());
-//    Recipe expected = Recipe.builder()
-//                            .id(3)
-//                            .title("チキンカレー")
-//                            .makingTime("45分")
-//                            .serves("5人")
-//                            .ingredients("玉ねぎ,肉,スパイス")
-//                            .cost(450)
-//                            .build();
-//
-//    assertEquals(expected, actual);
-//  }
+  @Test
+  void test_指定したレシピを正常に登録できる事() {
+
+    Recipe actual = target.createRecipe(Recipe.builder()
+                                              .title("チキンカレー")
+                                              .makingTime("45分")
+                                              .serves("5人")
+                                              .ingredients("玉ねぎ,肉,スパイス")
+                                              .cost(450)
+                                              .build());
+    Recipe expected = Recipe.builder()
+                            .id(3)
+                            .title("チキンカレー")
+                            .makingTime("45分")
+                            .serves("5人")
+                            .ingredients("玉ねぎ,肉,スパイス")
+                            .cost(450)
+                            .build();
+
+    assertThat(actual).isEqualTo(expected);
+  }
 
 
 }
