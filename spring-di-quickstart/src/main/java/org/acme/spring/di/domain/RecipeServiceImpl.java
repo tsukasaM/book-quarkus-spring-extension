@@ -56,6 +56,9 @@ public class RecipeServiceImpl implements RecipeService {
     }
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Recipe createRecipe(Recipe recipe) {
     RecipeEntity recipeEntity =  RecipeEntity.builder()
