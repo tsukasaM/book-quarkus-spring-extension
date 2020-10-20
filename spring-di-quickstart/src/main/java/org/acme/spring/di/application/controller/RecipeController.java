@@ -9,6 +9,7 @@ import org.acme.spring.di.application.payload.CreateRecipeResponse;
 import org.acme.spring.di.application.payload.RecipeResponse;
 import org.acme.spring.di.domain.Recipe.Recipe;
 import org.acme.spring.di.domain.RecipeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,12 +21,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
-@NoArgsConstructor
 @RestController
 @RequestMapping("recipe")
 public class RecipeController {
 
-  @NonNull
+  @Autowired
   private RecipeService recipeService;
 
   /**
@@ -49,7 +49,7 @@ public class RecipeController {
    */
   @PostMapping
   @Produces(MediaType.APPLICATION_JSON)
-  public CreateRecipeResponse getRecipe(CreateRecipeRequest request) {
+  public CreateRecipeResponse createRecipe(CreateRecipeRequest request) {
     Recipe recipe = recipeService.createRecipe(request.toModel());
     return CreateRecipeResponse.of(recipe);
   }
