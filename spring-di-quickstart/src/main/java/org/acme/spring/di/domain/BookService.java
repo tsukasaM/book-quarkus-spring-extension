@@ -5,12 +5,12 @@
 
 package org.acme.spring.di.domain;
 
-import org.acme.spring.di.domain.Recipe.Recipe;
+import org.acme.spring.di.domain.Book.Book;
 
 /**
  * レシピに関するサービスのインターフェース。
  */
-public interface RecipeService {
+public interface BookService {
 
   /**
    * 指定した id のレシピを取得します。
@@ -18,14 +18,14 @@ public interface RecipeService {
    * @param recipeId 取得したいレシピ id
    * @return 取得したレシピ
    */
-  Recipe getRecipe(Integer recipeId);
+  Book getBook(Integer recipeId);
 
 
   /**
    * 指定したレシピを登録するためのエンドポイントです
    *
-   * @param recipe 登録したいレシピのドメインモデル
+   * @param book 登録したいレシピのドメインモデル
    * @return 登録したレシピ
    */
-  Recipe createRecipe(Recipe recipe);
+  Book createBook(Book book);
 }

@@ -18,13 +18,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Timestamp;
 
-@Table(name = "recipes")
+@Table(name = "books")
 @Data
 @Builder
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class RecipeEntity {
+public class BookEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,12 +35,6 @@ public class RecipeEntity {
 
   @Column(name = "making_time", length = 100)
   private String makingTime;
-
-  @Column(name = "serves", length = 100)
-  private String serves;
-
-  @Column(name = "ingredients", length = 300)
-  private String ingredients;
 
   @Column(name = "cost")
   private Integer cost;

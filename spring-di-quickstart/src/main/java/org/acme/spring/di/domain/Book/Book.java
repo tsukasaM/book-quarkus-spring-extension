@@ -3,7 +3,7 @@
  *
  */
 
-package org.acme.spring.di.domain.Recipe;
+package org.acme.spring.di.domain.Book;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,17 +14,13 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Recipe {
+public class Book {
 
   private Integer id;
 
   private String title;
 
-  private String makingTime;
-
-  private String serves;
-
-  private String ingredients;
+  private String author;
 
   private Integer cost;
 }
