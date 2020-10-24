@@ -28,7 +28,7 @@ public class CreateBookResponse {
 
   public static CreateBookResponse of(Book book) {
     return CreateBookResponse.builder()
-                             .message("Recipe successfully created!")
+                             .message("Book successfully created!")
                              .title(book.getTitle())
                              .author(book.getAuthor())
                              .cost(book.getCost())

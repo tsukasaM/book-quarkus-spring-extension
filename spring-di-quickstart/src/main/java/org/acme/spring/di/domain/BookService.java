@@ -8,24 +8,24 @@ package org.acme.spring.di.domain;
 import org.acme.spring.di.domain.Book.Book;
 
 /**
- * レシピに関するサービスのインターフェース。
+ * 本に関するサービスのインターフェース。
  */
 public interface BookService {
 
   /**
-   * 指定した id のレシピを取得します。
+   * 指定した id の本を取得します。
    *
-   * @param recipeId 取得したいレシピ id
-   * @return 取得したレシピ
+   * @param bookId 取得したい本 id
+   * @return 取得した本
    */
-  Book getBook(Integer recipeId);
+  Book getBook(Integer bookId);
 
 
   /**
-   * 指定したレシピを登録するためのエンドポイントです
+   * 指定した本を登録するためのエンドポイントです
    *
-   * @param book 登録したいレシピのドメインモデル
-   * @return 登録したレシピ
+   * @param book 登録したい本のドメインモデル
+   * @return 登録した本
    */
   Book createBook(Book book);
 }

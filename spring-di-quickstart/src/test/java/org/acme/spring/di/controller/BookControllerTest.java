@@ -20,13 +20,13 @@ class BookControllerTest {
   BookService bookService;
 
   @Test
-  void test_指定したidでレシピを取得できる() {
+  void test_指定したidで本を取得できる() {
 
     when(bookService.getBook(1)).thenReturn(Book.builder()
                                                 .id(1)
-                                                .title("チキンカレー")
-                                                .author("45分")
-                                                .cost(1000)
+                                                .title("java 入門")
+                                                .author("hoge")
+                                                .cost(5000)
                                                 .build());
 
       given()
@@ -36,25 +36,25 @@ class BookControllerTest {
         .then()
            .statusCode(200)
            .body("id", equalTo(1))
-           .body("title", equalTo("チキンカレー"))
-           .body("cost", equalTo(1000));
+           .body("title", equalTo("java 入門"))
+           .body("cost", equalTo(5000));
 
       verify(bookService).getBook(1);
   }
 
   @Test
-  void test_POSTでリクエストしてレシピが登録できる事() {
+  void test_POSTでリクエストして本が登録できる事() {
 
     when(bookService.createBook(Book.builder()
-                                    .title("チキンカレー")
-                                    .author("45分")
-                                    .cost(450)
+                                    .title("swift 入門")
+                                    .author("huga")
+                                    .cost(3000)
                                     .build()))
         .thenReturn(Book.builder()
                         .id(1)
-                        .title("チキンカレー")
-                        .author("45分")
-                        .cost(450)
+                        .title("swift 入門")
+                        .author("huga")
+                        .cost(3000)
                         .build());
 
 
@@ -62,16 +62,16 @@ class BookControllerTest {
         .when()
         .contentType("application/json")
         .body(marshalToJson(CreateBookRequest.builder()
-                                             .title("チキンカレー")
-                                             .author("45分")
-                                             .cost(450)
+                                             .title("swift 入門")
+                                             .author("huga")
+                                             .cost(3000)
                                              .build()))
         .post("/book")
         .then()
         .statusCode(200)
-        .body("message", equalTo("Recipe successfully created!"))
-        .body("title", equalTo("チキンカレー"))
-        .body("cost", equalTo(450));
+        .body("message", equalTo("Book successfully created!"))
+        .body("title", equalTo("swift 入門"))
+        .body("cost", equalTo(3000));
   }
 
 }

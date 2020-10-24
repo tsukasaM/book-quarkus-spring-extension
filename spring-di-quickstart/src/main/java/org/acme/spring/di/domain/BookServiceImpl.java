@@ -45,7 +45,7 @@ public class BookServiceImpl implements BookService {
       return Book.builder()
                  .id(bookEntity.getId())
                  .title(bookEntity.getTitle())
-                 .author(bookEntity.getMakingTime())
+                 .author(bookEntity.getAuthor())
                  .cost(bookEntity.getCost())
                  .build();
     } else {
@@ -61,7 +61,7 @@ public class BookServiceImpl implements BookService {
     BookEntity bookEntity =  BookEntity.builder()
                                        .cost(book.getCost())
                                        .title(book.getTitle())
-                                       .makingTime(book.getAuthor())
+                                       .author(book.getAuthor())
                                        .createdAt(Timestamp.valueOf(LocalDateTime.now().format(dateTimeFormatter)))
                                        .updatedAt(Timestamp.valueOf(LocalDateTime.now().format(dateTimeFormatter)))
                                        .build();
@@ -71,7 +71,7 @@ public class BookServiceImpl implements BookService {
     return Book.builder()
                .id(createdEntity.getId())
                .title(createdEntity.getTitle())
-               .author(createdEntity.getMakingTime())
+               .author(createdEntity.getAuthor())
                .cost(createdEntity.getCost())
                .build();
   }

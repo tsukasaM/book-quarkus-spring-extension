@@ -24,10 +24,6 @@ public class BookResponse {
 
   private String author;
 
-  private String serves;
-
-  private String ingredients;
-
   private Integer cost;
 
   public static BookResponse of(Book book) {

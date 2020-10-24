@@ -15,31 +15,31 @@ import javax.inject.Inject;
 import static com.ninja_squad.dbsetup.Operations.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("RecipeServiceImpl に対するテスト")
+@DisplayName("BookServiceImpl に対するテスト")
 @QuarkusTest
 class BookServiceImplTest {
 
   @Inject
   BookServiceImpl target;
 
-  public static final Operation DELETE_RECIPES = deleteAllFrom("recipes");
+  public static final Operation DELETE_RECIPES = deleteAllFrom("books");
   public static final Operation INSERT_RECIPES
-      = insertInto("recipes").columns("id",
-      "title",
-      "author",
-      "cost",
-      "created_at",
-      "updated_at")
+      = insertInto("books").columns("id",
+                                          "title",
+                                          "author",
+                                          "cost",
+                                          "created_at",
+                                          "updated_at")
                              .values(1,
-                                 "チキンカレー",
-                                 "45分",
-                                 1000,
+                                 "java 入門",
+                                 "hoge",
+                                 5000,
                                  "2016-01-10 12:10:12",
                                  "2016-01-10 12:10:12")
                              .values(2,
-                                 "オムライス",
-                                 "30分",
-                                 700,
+                                 "swift 入門",
+                                 "huga",
+                                 3000,
                                  "2016-01-11 13:10:12",
                                  "2016-01-11 13:10:12")
                              .build();
@@ -53,31 +53,31 @@ class BookServiceImplTest {
   }
 
   @Test
-  void test_指定したidのレシピを正常に取得できる() {
+  void test_指定したidの本を正常に取得できる() {
     Book actual = target.getBook(1);
     Book expected = Book.builder()
                         .id(1)
-                        .title("チキンカレー")
-                        .author("45分")
-                        .cost(1000)
+                        .title("java 入門")
+                        .author("hoge")
+                        .cost(5000)
                         .build();
 
     assertThat(actual).isEqualTo(expected);
   }
 
   @Test
-  void test_指定したレシピを正常に登録できる事() {
+  void test_指定した本を正常に登録できる事() {
 
     Book actual = target.createBook(Book.builder()
-                                        .title("チキンカレー")
-                                        .author("45分")
-                                        .cost(450)
+                                        .title("Vue.js 入門")
+                                        .author("piyo")
+                                        .cost(3000)
                                         .build());
     Book expected = Book.builder()
                         .id(3)
-                        .title("チキンカレー")
-                        .author("45分")
-                        .cost(450)
+                        .title("Vue.js 入門")
+                        .author("piyo")
+                        .cost(3000)
                         .build();
 
     assertThat(actual).isEqualTo(expected);

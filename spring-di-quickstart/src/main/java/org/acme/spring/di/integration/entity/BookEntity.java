@@ -33,8 +33,8 @@ public class BookEntity {
   @Column(name = "title", length = 100)
   private String title;
 
-  @Column(name = "making_time", length = 100)
-  private String makingTime;
+  @Column(name = "author", length = 100)
+  private String author;
 
   @Column(name = "cost")
   private Integer cost;
